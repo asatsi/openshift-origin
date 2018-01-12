@@ -443,7 +443,7 @@ echo $(date) " - Running network_manager.yml playbook"
 DOMAIN=`domainname -d` 
 
 # Setup NetworkManager to manage eth0 
-runuser -l $SUDOUSER -c "ansible-playbook openshift-ansible/playbooks/openshift-node/network_manager.yml" 
+runuser -l $SUDOUSER -c "ansible-playbook openshift-ansible/playbooks/byo/openshift-node/network_manager.yml" 
 
 echo $(date) " - Setting up NetworkManager on eth0" 
 # Configure resolv.conf on all hosts through NetworkManager 
@@ -456,7 +456,7 @@ runuser -l $SUDOUSER -c "ansible all -b -m service -a \"name=NetworkManager stat
 # Initiating installation of OpenShift Container Platform using Ansible Playbook
 echo $(date) " - Installing OpenShift Container Platform via Ansible Playbook"
 
-runuser -l $SUDOUSER -c "ansible-playbook openshift-ansible/playbooks/deploy_cluster.yml"
+runuser -l $SUDOUSER -c "ansible-playbook openshift-ansible/playbooks/byo/config.yml"
 
 echo $(date) " - Modifying sudoers"
 
